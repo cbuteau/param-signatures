@@ -2,9 +2,15 @@
 
 var matchers = require('./matchers/all');
 
-
 var log = emptyLog;
 
+// constants
+var INVALID_INDEX = -1;
+
+function totallyEquals(a, b) {
+  // i hate you.
+  return (a === b);
+}
 
 function isNullOrUndefined(objectToTest) {
   if ((objectToTest === null) || (objectToTest === undefined)) {
@@ -71,7 +77,7 @@ function validateObjects(obj, sig, errorList, options) {
       }
     }
     else {
-      var errorType = formatTypeOf(name, propObj, propSig);
+      var errorType = formatTypeOf(propName, propObj, propSig);
       errorList.push(errorFunc);
     }
 
@@ -81,47 +87,6 @@ function validateObjects(obj, sig, errorList, options) {
     }
   }
 }
-
-function validateObjects_old(obj, sig, errorList, options) {
-  var keys = Object.keys(sig);
-  //console.log(keys);
-  var sigprops = [];
-  for (var idx = 0; idx < keys.length; idx++) {
-    var propName = keys[idx];
-    //var sigProp = sig[propName];
-
-    // var matcher = matchers.findMatcher(sigProp);
-    // var type = matchers.getTypeCode(sigProp);
-    //
-    // console.log(matcher);
-    // console.log(type);
-  }
-
-  for (var index in keys) {
-    var item = keys[index];
-
-    if (options.detail) {
-      log('Processing \'' + item + '\'');
-    }
-    //console.log(item);
-    if (sig.hasOwnProperty(item)) {
-      var sigProp = sig[item];
-      if (obj.hasOwnProperty(item)) {
-
-        var objProp = obj[item];
-        validateProperty(item, objProp, sigProp, errorList, options);
-        if (options.detail) {
-          log('has item');
-        }
-      }
-      else {
-        var errorMsg = 'Does not have property \'' + item + '\' on object.';
-        errorList.push(errorMsg);
-      }
-    }
-  }
-}
-
 
 function throwIfErrors(errorList) {
   if (errorList.length > 0) {
@@ -158,7 +123,10 @@ function validateFunctionSignatures(name, propObj, propSig, errorList, options) 
 
 function emptyLog(data) {
 }
-
+/**
+* deprecated instanceof is a fast but vague test of an object's type.
+**/
+// @ deprecated
 function validateProperty(name, propObj, propSig, errorList, options) {
   // we have to match functions first because they are objects too and we want to inspect the function signatures.
   if (propSig instanceof Number) {
@@ -217,6 +185,57 @@ function validateProperty(name, propObj, propSig, errorList, options) {
   }
 }
 
+function cloneObj(obj) {
+  var newobj = {};
+  var keys = Object.keys(obj);
+  for (var i = 0; i < keys.length; i++) {
+    var prop = keys[i];
+    var type = matchers.getTypeCode(sigProp[prop]);
+    if (type === matchers.TYPECODES.OBJECT) {
+
+    }
+    newobj[prop] = obj[prop];
+  }
+
+  return newobj;
+}
+
+function mergeObjects(sig, obj, options) {
+  var typeSig = matchers.getTypeCode(sig);
+  var typeObj = matchers.getTypeCode(obj);
+
+  console.log('sig=%d obj=%d', typeSig, typeObj);
+
+  if ((typeSig === matchers.TYPECODES.OBJECT) && (typeObj === matchers.TYPECODES.OBJECT)) {
+    var keysSig = Object.keys(sig);
+    var keysObj = Object.keys(obj);
+
+    if (keysSig.length > keysObj.length)
+    {
+      // we add properties to the object.
+      var leftovers = keysSig.reduce(function(prev, cur, index, array) {
+        return keysObj.indexOf(cur) !== INVALID_INDEX;
+      });
+
+      log(leftovers);
+
+      for (var idx = 0; idx < keys.length; idx++) {
+        var propName = keys[idx];
+        var type = matchers.getTypeCode(sigProp[prop]);
+        if (type === matchers.TYPECODES.OBJECT) {
+            obj[prop] = cloneObj(sigProp[prop]);
+        } else {
+          obj[prop] = sigProp[prop];
+        }
+      }
+    }
+  } else {
+
+  }
+
+  return obj;
+}
+
 var optionsSignature = {
   extra_logging: false,
   props: true,
@@ -232,6 +251,7 @@ module.exports = {
     var errors = [];
 
     // Dogfooding the mechanism to decide on the options to use.
+    //var opts = mergeObjects(options, optionsSignature);
     var tempErrors = [];
     validateObjects(options, optionsSignature, tempErrors, defaultOptions);
     var opts = options;
@@ -255,17 +275,24 @@ module.exports = {
 
   tryValidate: function(obj,sig,errors) {
         errors = errors || [];
-        validateObjects(obj, sig, errors, opts);
+        validateObjects(obj, sig, errors, defaultOptions);
         return errors.length == 0;
-  },
+      },
 
   mergeAndReturn: function(obj, sig) {
+    return sig;
     var errors = [];
-    validateObjects(obj, sig, errors, opts);
+    validateObjects(obj, sig, errors);
     if (errors.length === 0) {
       return obj;
     } else {
       return mergeObjects(obj, sig);
     }
+  },
+
+  TYPECODES: matchers.TYPECODES,
+
+  getTypeCode: function(obj) {
+    return matchers.getTypeCode(obj);
   }
 };

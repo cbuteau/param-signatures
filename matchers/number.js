@@ -11,7 +11,7 @@ module.exports = {
     }
 
     // duck typing Boolean.
-    if (objectToTest.toString && objectToTest.valueOf) {
+    if (objectToTest.toString && objectToTest.valueOf && objectToTest.toPrecision) {
       return true;
     }
 

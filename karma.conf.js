@@ -24,7 +24,7 @@ module.exports = function(config) {
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js',
       'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js',
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-mocks.js',
-      'test-main.js',
+    //  'test-main.js',
       {pattern: 'spec/*spec.js', included: false},
       {pattern: 'spec/*Spec.js', included: false}
     ],
@@ -39,7 +39,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    },
+      'app/spec/*.js': [ 'browserify' ]
+     },
 
 
     // test results reporter to use
@@ -72,7 +73,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous
