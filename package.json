@@ -1,16 +1,17 @@
-
 {
   "name": "signatures",
   "version": "10.3.1",
   "description": "A javascript signature recognition library",
   "author": "Christopher Buteau <cbuteau@gmail.com>",
-  "contributors": [{
-  "name": "Foo Bar",
-  "email": "foo.bar@example.com"
-}],
+  "contributors": [
+    {
+      "name": "Foo Bar",
+      "email": "foo.bar@example.com"
+    }
+  ],
   "bin": {
-  "module-name": "./bin/module-name"
-},
+    "module-name": "./bin/module-name"
+  },
   "scripts": {
     "test": "vows --spec --isolate",
     "start": "node index.js",
@@ -20,17 +21,17 @@
   },
   "main": "lib/foo.js",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/cbuteau/signatures"
-},
+    "type": "git",
+    "url": "https://github.com/cbuteau/signatures"
+  },
   "bugs": {
-  "url": "https://github.com/cbuteau/signatures/issues"
-},
+    "url": "https://github.com/cbuteau/signatures/issues"
+  },
   "keywords": [
-  "nodejitsu",
-  "example",
-  "browsenpm"
-],
+    "nodejitsu",
+    "example",
+    "browsenpm"
+  ],
   "dependencies": {
     "primus": "*",
     "async": "~0.8.0",
@@ -40,15 +41,20 @@
     "plates": "https://github.com/flatiron/plates/tarball/master"
   },
   "devDependencies": {
-    "vows": "^0.7.0",
     "assume": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
-    "pre-commit": "*"
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.2",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "pre-commit": "*",
+    "vows": "^0.7.0"
   },
   "preferGlobal": true,
   "private": true,
   "publishConfig": {
-  "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"
-},
+    "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"
+  },
   "subdomain": "foobar",
   "analyze": true,
   "license": "MIT"

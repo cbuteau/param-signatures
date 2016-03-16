@@ -14,15 +14,16 @@ module.exports = function(config) {
 
     // http://stackoverflow.com/questions/19117092/jasmine-tests-in-karma-uncaught-referenceerror-require-is-not-defined
 
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
-    preprocessors: {
-        'app/spec/*Spec.js': [ 'browserify' ]
-     },
 
 
     // list of files / patterns to load in the browser
     files: [
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js',
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js',
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-mocks.js',
       'test-main.js',
       {pattern: 'spec/*spec.js', included: false},
       {pattern: 'spec/*Spec.js', included: false}
@@ -37,8 +38,8 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    // preprocessors: {
-    // },
+    preprocessors: {
+    },
 
 
     // test results reporter to use
@@ -66,8 +67,8 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'IE', 'PhantomJS'],
-
+    //browsers: ['Chrome', 'Firefox', 'IE', 'PhantomJS'],
+    browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -75,6 +76,6 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    //concurrency: Infinity
+  });
+};

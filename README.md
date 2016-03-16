@@ -30,7 +30,7 @@ function initializer(param1, param2, options) {
 
 The reason I hate that is because it assumes that it either the caller provided the right options or did not provide them at all.  It does not take into account that an empty object was passed or some of the options
 
-Later code will assume the options object
+Later code will assume the options object has certain properties and if it was an empty object it will pass the first test and then explode with a [TypeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError "MDN")
 
 ## Concept
 
@@ -38,6 +38,7 @@ The concept is simple since javascript has no sense of interfaces and the typing
 
 The idea is that you validate parameters to be in the form (nested or not) like options in a function call.  The code could then decide to use the object throw an exception or replace the object with defaults.
 
+## API
 
 Signature for this library.
 
@@ -88,4 +89,6 @@ Right now nobody.  If you stumble on this and find a production worthy usage sen
 
 ## Future Plans
 
-I hope to get builds and unit tests running in the future but I have no plans for minification 
+I hope to get builds and unit tests running in the future but I have no plans for [minification][1]
+
+[1]: https://en.wikipedia.org/wiki/Minification_(programming)

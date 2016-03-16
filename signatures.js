@@ -2,18 +2,8 @@
 
 var matchers = require('./matchers/all');
 
-//console.log('before matchers');
-//console.log(matchers);
 
 var log = emptyLog;
-
-// var TYPECODES = {
-//   BOOLEAN: 0,
-//   NUMBER: 1,
-//   STRING: 2,
-//   FUNCTION: 3,
-//   OBJECT: 4
-// };
 
 
 function isNullOrUndefined(objectToTest) {
@@ -263,9 +253,19 @@ module.exports = {
     throwIfErrors(errors);
   },
 
-  tryValidate: function(obj,sig) {
-        var errors = [];
+  tryValidate: function(obj,sig,errors) {
+        errors = errors || [];
         validateObjects(obj, sig, errors, opts);
-        return errors;
+        return errors.length == 0;
   },
+
+  mergeAndReturn: function(obj, sig) {
+    var errors = [];
+    validateObjects(obj, sig, errors, opts);
+    if (errors.length === 0) {
+      return obj;
+    } else {
+      return mergeObjects(obj, sig);
+    }
+  }
 };
