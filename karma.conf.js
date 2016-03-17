@@ -16,7 +16,11 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
 
-
+    plugins: [
+         'karma-jasmine',
+         'karma-chrome-launcher',
+         'karma-browserify'
+     ],
 
     // list of files / patterns to load in the browser
     files: [
@@ -24,9 +28,7 @@ module.exports = function(config) {
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js',
       'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js',
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-mocks.js',
-    //  'test-main.js',
-      {pattern: 'spec/*spec.js', included: false},
-      {pattern: 'spec/*Spec.js', included: false}
+      'spec/*Spec.js'
     ],
 
 
@@ -39,7 +41,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'app/spec/*.js': [ 'browserify' ]
+      'spec/*Spec.js': [ 'browserify' ]
      },
 
 
@@ -59,7 +61,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes

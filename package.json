@@ -48,7 +48,8 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.7",
     "pre-commit": "*",
-    "vows": "^0.7.0"
+    "vows": "^0.7.0",
+    "watchify": "^3.7.0"
   },
   "preferGlobal": true,
   "private": true,

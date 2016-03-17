@@ -13,6 +13,7 @@ module.internals = {
     var str = require('./string');
     var num = require('./number');
     var date = require('./date');
+    var arr = require('./array');
 
     module.internals.matchers.push(nil);
     module.internals.matchers.push(und);
@@ -21,6 +22,7 @@ module.internals = {
     module.internals.matchers.push(num);
     module.internals.matchers.push(str);
     module.internals.matchers.push(date);
+    module.internals.matchers.push(arr);
     module.internals.matchers.push(obj);
   }
 };

@@ -7,7 +7,7 @@ module.exports = {
 
   isTypeMatch: function(objectToTest) {
     // duck typing Array.
-    if (objectToTest.length && objectToTest.indexOf && objectToTest.push && objectToTest.slice) {
+    if (objectToTest.map && objectToTest.indexOf && objectToTest.push && objectToTest.slice) {
       return true;
     }
 

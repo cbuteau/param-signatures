@@ -77,8 +77,8 @@ function validateObjects(obj, sig, errorList, options) {
       }
     }
     else {
-      var errorType = formatTypeOf(propName, propObj, propSig);
-      errorList.push(errorFunc);
+      var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
+      errorList.push(errorType);
     }
 
 
@@ -99,9 +99,10 @@ function throwIfErrors(errorList) {
   }
 }
 
-function formatTypeOf(name, propObj, propSig) {
-  var format = 'Prop \'' + name + '\' is type ' + typeof(propObj);
+function formatTypeOf(name, propObj, propSig, typeObj, typeSig) {
+  var format = 'Prop \"' + name + '\" is type ' + typeof(propObj);
   format += ' while the signature is ' + typeof(propSig);
+  format += ' and we think sig=' + matchers.typeCodeToString(typeSig) + ' obj=' +  matchers.typeCodeToString(typeObj);
   return format;
 }
 
@@ -123,67 +124,6 @@ function validateFunctionSignatures(name, propObj, propSig, errorList, options) 
 
 function emptyLog(data) {
 }
-/**
-* deprecated instanceof is a fast but vague test of an object's type.
-**/
-// @ deprecated
-function validateProperty(name, propObj, propSig, errorList, options) {
-  // we have to match functions first because they are objects too and we want to inspect the function signatures.
-  if (propSig instanceof Number) {
-    if (propObj instanceof Number) {
-      // don't care if its int or float.
-      // don't care if they are equal.
-      if (options.props) {
-        log('Sig and Obj prop \'' + name + '\' are Numbers');
-      }
-    }
-    else {
-      var anotherError = formatTypeOf(name, propObj, propSig);
-      errorList.push(anotherError);
-    }
-  }
-  else if (propSig instanceof Boolean) {
-    if (propObj instanceof Boolean) {
-      // cool
-      if (options.props) {
-        log('Sig and Obj prop \'' + name + '\' are Booleans');
-      }
-    }
-    else {
-      var errorAgain = formatTypeOf(name, propObj, propSig);
-      errorList.push(errorAgain);
-    }
-  }
-  else if (propSig instanceof Function) {
-    if (propObj instanceof Function) {
-      if (options.props) {
-        log('Sig and Obj prop \'' + name + '\' are Functions');
-      }
-      validateFunctionSignatures(name, propObj, propSig, errorList, options);
-    }
-    else {
-      var errorFunc = formatTypeOf(name, propObj, propSig);
-      errorList.push(errorFunc);
-    }
-  }
-  else if (propSig instanceof Object) {
-    if (propObj instanceof Object) {
-      // hurrah recurse.
-      if (options.props) {
-        log('Sig and Obj prop \'' + name + '\' are objects');
-      }
-      validateObjects(propObj, propSig, errorList);
-    }
-    else {
-      var errorInfo = formatTypeOf(name, propObj, propSig);
-      errorList.push(errorInfo);
-    }
-    // recurse
-  }
-  else {
-    errorList.push('\'' + name + '\' Property types did not match. sig=' + typeof(propSig) + ' obj=' + typeof(propObj));
-  }
-}
 
 function cloneObj(obj) {
   var newobj = {};
@@ -200,7 +140,19 @@ function cloneObj(obj) {
   return newobj;
 }
 
-function mergeObjects(sig, obj, options) {
+function getLeftovers(biggerArray, smallerArray) {
+  var leftovers = [];
+  for (var i = 0; i < biggerArray.length; i++) {
+    var val = biggerArray[i];
+    if (smallerArray.indexOf(val) === INVALID_INDEX) {
+      leftovers.push(val);
+    }
+  }
+
+  return leftovers;
+}
+
+function mergeObjects(obj, sig, options) {
   var typeSig = matchers.getTypeCode(sig);
   var typeObj = matchers.getTypeCode(obj);
 
@@ -213,23 +165,35 @@ function mergeObjects(sig, obj, options) {
     if (keysSig.length > keysObj.length)
     {
       // we add properties to the object.
-      var leftovers = keysSig.reduce(function(prev, cur, index, array) {
-        return keysObj.indexOf(cur) !== INVALID_INDEX;
-      });
-
+      var leftovers = getLeftovers(keysSig, keysObj);
       log(leftovers);
 
-      for (var idx = 0; idx < keys.length; idx++) {
-        var propName = keys[idx];
-        var type = matchers.getTypeCode(sigProp[prop]);
+      for (var idx = 0; idx < leftovers.length; idx++) {
+        var propName = leftovers[idx];
+        var type = matchers.getTypeCode(sig[propName]);
         if (type === matchers.TYPECODES.OBJECT) {
-            obj[prop] = cloneObj(sigProp[prop]);
+            obj[propName] = cloneObj(sig[propName]);
         } else {
-          obj[prop] = sigProp[prop];
+          obj[propName] = sig[propName];
         }
       }
-    }
-  } else {
+
+      return obj;
+    } else if (keysSig.length < keysObj.length) {
+      // make a shorter object.
+      var newObj = {};
+      for (var idx = 0; idx < keysSig.length; idx++) {
+        var propName = keysSig[idx];
+        var type = matchers.getTypeCode(obj[propName]);
+        if (type === matchers.TYPECODES.OBJECT) {
+            newObj[propName] = cloneObj(obj[propName]);
+        } else {
+          newObj[propName] = obj[propName];
+        }
+      }
+
+      return newObj;
+  }
 
   }
 
@@ -252,6 +216,7 @@ module.exports = {
 
     // Dogfooding the mechanism to decide on the options to use.
     //var opts = mergeObjects(options, optionsSignature);
+    var optsTemp = module.exports.mergeAndReturn(options, defaultOptions);
     var tempErrors = [];
     validateObjects(options, optionsSignature, tempErrors, defaultOptions);
     var opts = options;
@@ -276,11 +241,22 @@ module.exports = {
   tryValidate: function(obj,sig,errors) {
         errors = errors || [];
         validateObjects(obj, sig, errors, defaultOptions);
+        //console.log(errors);
         return errors.length == 0;
       },
 
   mergeAndReturn: function(obj, sig) {
-    return sig;
+    //return sig;
+
+    // make empty object
+    if (isNullOrUndefined(obj)) {
+        obj = {};
+    }
+
+    if (isNullOrUndefined(sig)) {
+        throw new Error('signature cannot be null or undefined');
+    }
+
     var errors = [];
     validateObjects(obj, sig, errors);
     if (errors.length === 0) {

@@ -7,7 +7,7 @@ Originatting in COM and then in .NET I learned the value of interfaces very earl
 
 Being very new to javascript the thing I did not like right off the bat was the amount of assumptions that are made in complex code bases.
 
-Like take this common snippet for option processing.
+Take this common snippet for option processing.
 
 ```javascript
 
@@ -55,6 +55,13 @@ tryValidate(object, signature)
 validates an object against a signature object and returns a collection of errors.
 
 ```javascript
+var opts = mergeAndReturn(object, defaultObject);
+```
+Adds the properties to object that exist in defaultObject and returns a fresh object obeying the signature defined.
+
+## Example
+
+```javascript
 var signatures = require('signatures');
 
 var sig = {
@@ -82,6 +89,8 @@ signatures.validate(sig, obj1);
 ## Strategy
 
 Although javascript is dynamic and always being optimized the final product is machine instructions and thus I prefer a limit of tests to perform work and would rather match against an integer versus a string.  Hopefully it will result in faster code which this is supposed to be a simple functionality.
+
+When I originally set out to perform this work I tried to use the [instanceof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator because it was so simple and fast.  I found it to be unreliable since everything matched as Object to begin with.  Based on articles I read and some experiments 
 
 ## Who uses this?
 

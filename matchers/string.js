@@ -6,12 +6,8 @@ module.exports = {
   },
 
   isTypeMatch: function(objectToTest) {
-    if (objectToTest instanceof String) {
-      return true;
-    }
-
     // duck typing String.
-    if (objectToTest.length && objectToTest.indexOf && objectToTest.toLowerCase && objectToTest.toUpperCase) {
+    if (objectToTest.trim && objectToTest.indexOf && objectToTest.toLowerCase && objectToTest.toUpperCase) {
       return true;
     }
 

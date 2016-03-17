@@ -1,6 +1,10 @@
 
 var signatures = require('../signatures');
 
+function testOne(param) {
+
+}
+
 describe('Stability and relibility in type code.', function() {
   it ('null', function() {
     var type = signatures.getTypeCode(null);
@@ -36,4 +40,22 @@ describe('Stability and relibility in type code.', function() {
     var type = signatures.getTypeCode(false);
     expect(type).toBe(signatures.TYPECODES.BOOLEAN);
   });
+
+  it ('array', function() {
+    var type = signatures.getTypeCode([]);
+    expect(type).toBe(signatures.TYPECODES.ARRAY);
+
+    var type = signatures.getTypeCode([true, false, true]);
+    expect(type).toBe(signatures.TYPECODES.ARRAY);
+  });
+
+  it ('function', function() {
+    var type = signatures.getTypeCode(testOne);
+    expect(type).toBe(signatures.TYPECODES.FUNCTION);
+
+    var type = signatures.getTypeCode(function () {});
+    expect(type).toBe(signatures.TYPECODES.FUNCTION);
+  });
+
+
 });

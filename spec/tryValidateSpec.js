@@ -201,7 +201,7 @@ describe('Validate tryValidate function', function() {
       fieldOne: new Date('2016-03-02T18:22:34Z'),
     };
 
-    expect(signatures.tryValidate(sig, obj))
+    expect(signatures.tryValidate(sig, obj)).toBe(true);
   });
 
 });
