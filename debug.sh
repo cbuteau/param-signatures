@@ -1,5 +1,8 @@
-#!/usr/bin/sh
+#!/bin/bash
 # My first script
+
+# run by typing
+# bash debug.sh
 
 echo "Hello World!"
 
