@@ -1,6 +1,6 @@
 {
   "name": "signatures",
-  "version": "10.3.1",
+  "version": "0.0.1",
   "description": "A javascript signature recognition library",
   "author": "Christopher Buteau <cbuteau@gmail.com>",
   "contributors": [
@@ -19,7 +19,7 @@
     "postdeploy": "echo ive deployed",
     "prepublish": "coffee --bare --compile --output lib/foo src/foo/*.coffee"
   },
-  "main": "lib/foo.js",
+  "main": "signatures.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/cbuteau/signatures"
@@ -33,12 +33,6 @@
     "browsenpm"
   ],
   "dependencies": {
-    "primus": "*",
-    "async": "~0.8.0",
-    "express": "4.2.x",
-    "winston": "git://github.com/flatiron/winston#master",
-    "bigpipe": "bigpipe/pagelet",
-    "plates": "https://github.com/flatiron/plates/tarball/master"
   },
   "devDependencies": {
     "assume": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
@@ -51,7 +45,7 @@
     "vows": "^0.7.0",
     "watchify": "^3.7.0"
   },
-  "preferGlobal": true,
+  "preferGlobal": false,
   "private": true,
   "publishConfig": {
     "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"

@@ -3,7 +3,7 @@
 
 ## Background
 
-Originatting in COM and then in .NET I learned the value of interfaces very early on and used them consistenly through many different code bases.
+As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.
 
 Being very new to javascript the thing I did not like right off the bat was the amount of assumptions that are made in complex code bases.
 
@@ -90,13 +90,18 @@ signatures.validate(sig, obj1);
 
 Although javascript is dynamic and always being optimized the final product is machine instructions and thus I prefer a limit of tests to perform work and would rather match against an integer versus a string.  Hopefully it will result in faster code which this is supposed to be a simple functionality.
 
-When I originally set out to perform this work I tried to use the [instanceof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator because it was so simple and fast.  I found it to be unreliable since everything matched as Object to begin with.  Based on articles I read and some experiments 
+When I originally set out to perform this work I tried to use the [instanceof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator because it was so simple and fast.  I found it to be unreliable since everything matched as Object to begin with.  Based on articles I read and some experiments I found that [duck typing](https://en.wikipedia.org/wiki/Duck_typing) was not just the most reliable method but the most efficient as well.
+
+I also like to keep in mind the actual machine operations when code runs which is why a type is resolved to a type code versus a string so it can optimize to an integer and do int [tests](http://stackoverflow.com/questions/12665289/cmp-je-jg-how-they-work-in-assembly) to determine the type.
+
 
 ## Who uses this?
 
 Right now nobody.  If you stumble on this and find a production worthy usage send me a URL and I will include it in this section.
 
 ## Future Plans
+
+I would like to get this functional for not just [Node](https://nodejs.org/) but browsers as well.
 
 I hope to get builds and unit tests running in the future but I have no plans for [minification][1]
 
