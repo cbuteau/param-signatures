@@ -26,7 +26,7 @@ describe('Basic Tests', function (){
 
 
     var options = {
-      extra_logging: true,
+      enable_logging: true,
       props: true,
       detail: false
     };

@@ -1,8 +1,8 @@
 
 var signatures = require('../signatures');
 
-describe('merge exercises', function() {
-  it('merges easilt', function() {
+describe('mergeSpec.js merge exercises...', function() {
+  it('merges easily', function() {
     var signature = {
       fieldOne: true,
       fieldTwo: 10,

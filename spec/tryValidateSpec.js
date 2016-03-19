@@ -2,7 +2,7 @@
 
 var signatures = require('../signatures');
 
-describe('Validate tryValidate function', function() {
+describe('tryValidatSpec.js Validate tryValidate function...', function() {
   it ('null', function() {
     var sig = {
       fieldOne: null,

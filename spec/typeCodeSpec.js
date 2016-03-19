@@ -5,7 +5,7 @@ function testOne(param) {
 
 }
 
-describe('Stability and relibility in type code.', function() {
+describe('typeCodeSpec.js Stability and relibility in type code...', function() {
   it ('null', function() {
     var type = signatures.getTypeCode(null);
     expect(type).toBe(signatures.TYPECODES.NULL);

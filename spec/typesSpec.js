@@ -1,7 +1,7 @@
 
 var signatures = require('../signatures');
 
-describe('Validate handling of each type', function() {
+describe('typesSpec.js Validate handling of each type...', function() {
   it ('null', function() {
     var sig = {
       fieldOne: null,

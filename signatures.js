@@ -23,6 +23,11 @@ function isNullOrUndefined(objectToTest) {
 function validateObjects(obj, sig, errorList, options) {
   //console.log('valid objests options follow');
   //console.log(options);
+  if (isNullOrUndefined(options)) {
+    console.error('options are null or undefined');
+  }
+
+
   if (isNullOrUndefined(obj)) {
     errorList.push('Object is null or undefined');
     return;
@@ -47,7 +52,7 @@ function validateObjects(obj, sig, errorList, options) {
   for (var idx = 0; idx < keys.length; idx++) {
     var propName = keys[idx];
 
-    if (options.extra_logging) {
+    if (options.enable_logging) {
       log('BEGIN propName=' + propName);
     }
 
@@ -82,7 +87,7 @@ function validateObjects(obj, sig, errorList, options) {
     }
 
 
-    if (options.extra_logging) {
+    if (options.enable_logging) {
       log('END propName=' + propName);
     }
   }
@@ -152,15 +157,73 @@ function getLeftovers(biggerArray, smallerArray) {
   return leftovers;
 }
 
+function getComparison(objFieldArray, sigFieldArray) {
+  var comparison = {
+    matches: [],
+    missing: [],
+    extra: []
+  };
+
+  for (var i = 0; i < sigFieldArray.length; i++) {
+    var val = sigFieldArray[i];
+    if (objFieldArray.indexOf(val) === INVALID_INDEX) {
+      comparison.missing.push(val);
+    } else {
+      comparison.matches.push(val);
+    }
+  }
+
+  for (var j = 0; j < objFieldArray.length; j++) {
+    var valO = objFieldArray[j];
+    if (sigFieldArray.indexOf(valO) === INVALID_INDEX) {
+      comparison.extra.push(valO);
+    }
+  }
+
+  return comparison;
+}
+
 function mergeObjects(obj, sig, options) {
   var typeSig = matchers.getTypeCode(sig);
   var typeObj = matchers.getTypeCode(obj);
 
-  console.log('sig=%d obj=%d', typeSig, typeObj);
+  //console.log('sig=%d obj=%d', typeSig, typeObj);
 
   if ((typeSig === matchers.TYPECODES.OBJECT) && (typeObj === matchers.TYPECODES.OBJECT)) {
     var keysSig = Object.keys(sig);
     var keysObj = Object.keys(obj);
+
+    var comp = getComparison(keysObj, keysSig);
+
+    // make a new object every time.
+    var newObj = {};
+
+    for (var i = 0; i < comp.missing.length; i++) {
+      var propName = comp.missing[i];
+      var sigData = sig[propName];
+      var sigType = matchers.getTypeCode(sigData);
+      if (sigType === matchers.TYPECODES.OBJECT) {
+        newObj[propName] = cloneObj(sigData);
+      } else {
+        newObj[propName] = sigData;
+      }
+    }
+
+    for (var j = 0; j < comp.matches.length; j++) {
+        propName = comp.matches[j];
+        var objData = obj[propName];
+
+        var objType = matchers.getTypeCode(objData);
+        if (objType === matchers.TYPECODES.OBJECT) {
+          newObj[propName] = cloneObj(objData);
+        } else {
+          newObj[propName] = objData;
+        }
+    }
+
+    return newObj;
+
+    /* old code
 
     if (keysSig.length > keysObj.length)
     {
@@ -172,16 +235,14 @@ function mergeObjects(obj, sig, options) {
         var propName = leftovers[idx];
         var type = matchers.getTypeCode(sig[propName]);
         if (type === matchers.TYPECODES.OBJECT) {
-            obj[propName] = cloneObj(sig[propName]);
+            newObj[propName] = cloneObj(sig[propName]);
         } else {
-          obj[propName] = sig[propName];
+          newObj[propName] = sig[propName];
         }
       }
 
-      return obj;
+      return newObj;
     } else if (keysSig.length < keysObj.length) {
-      // make a shorter object.
-      var newObj = {};
       for (var idx = 0; idx < keysSig.length; idx++) {
         var propName = keysSig[idx];
         var type = matchers.getTypeCode(obj[propName]);
@@ -192,21 +253,21 @@ function mergeObjects(obj, sig, options) {
         }
       }
 
-      return newObj;
+    }
+    */
+  } else {
+    // for now...we will get smarter once testing single types.
+    return sig;
   }
-
-  }
-
-  return obj;
 }
 
 var optionsSignature = {
-  extra_logging: false,
+  enable_logging: false,
   props: true,
 };
 
 var defaultOptions = {
-  extra_logging: false,
+  enable_logging: false,
   props: false,
 };
 
@@ -217,17 +278,18 @@ module.exports = {
     // Dogfooding the mechanism to decide on the options to use.
     //var opts = mergeObjects(options, optionsSignature);
     var optsTemp = module.exports.mergeAndReturn(options, defaultOptions);
-    var tempErrors = [];
-    validateObjects(options, optionsSignature, tempErrors, defaultOptions);
-    var opts = options;
-    if (tempErrors.length > 0) {
-      opts = defaultOptions;
-    }
+    var opts = optsTemp;
+    // var tempErrors = [];
+    // validateObjects(options, optionsSignature, tempErrors, defaultOptions);
+    // var opts = options;
+    // if (tempErrors.length > 0) {
+    //   opts = defaultOptions;
+    // }
 
     //console.log('selected options');
     //console.log(opts);
 
-    if (opts.extra_logging) {
+    if (opts.enable_logging) {
       log = console.log;
     }
     else {
@@ -254,11 +316,11 @@ module.exports = {
     }
 
     if (isNullOrUndefined(sig)) {
-        throw new Error('signature cannot be null or undefined');
+        throw new Error('signature/default cannot be null or undefined');
     }
 
     var errors = [];
-    validateObjects(obj, sig, errors);
+    validateObjects(obj, sig, errors, defaultOptions);
     if (errors.length === 0) {
       return obj;
     } else {
