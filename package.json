@@ -1,5 +1,5 @@
 {
-  "name": "signatures",
+  "name": "param-signatures",
   "version": "0.0.1",
   "description": "A javascript signature recognition library",
   "author": "Christopher Buteau <cbuteau@gmail.com>",
