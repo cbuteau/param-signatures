@@ -8,7 +8,7 @@
     "start": "node index.js",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
-    "prepublish": "coffee --bare --compile --output lib/foo src/foo/*.coffee"
+    "prepublish": "echo prepublish"
   },
   "main": "signatures.js",
   "repository": {
