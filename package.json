@@ -5,7 +5,8 @@
   "author": "Christopher Buteau <cbuteau@gmail.com>",
   "scripts": {
     "test": "node jasmine-runner.js",
-    "start": "node index.js",
+    "debug": "node-debug jasmine-runner.js",
+    "start": "node signatures.js",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
     "prepublish": "echo prepublish"

@@ -27,7 +27,6 @@ function validateObjects(obj, sig, errorList, options) {
     console.error('options are null or undefined');
   }
 
-
   if (isNullOrUndefined(obj)) {
     errorList.push('Object is null or undefined');
     return;
@@ -38,6 +37,22 @@ function validateObjects(obj, sig, errorList, options) {
     return;
   }
 
+  var rootSigType = matchers.getTypeCode(sig);
+  var rootObjType = matchers.getTypeCode(obj);
+
+  if (rootSigType === rootObjType) {
+    // hurray
+    if (rootSigType === matchers.TYPECODES.OBJECT) {
+      validateObjectProperties('root', obj, sig, errorList, options);
+    } else if (rootSigType === matchers.TYPECODES.FUNCTION) {
+      validateFunctionSignatures('root', obj, sig, errorList, options);
+    }
+  } else {
+    var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
+    errorList.push(errorType);
+  }
+
+  /*
   var keys = Object.keys(sig);
   var keysObj = Object.keys(obj);
 
@@ -91,6 +106,7 @@ function validateObjects(obj, sig, errorList, options) {
       log('END propName=' + propName);
     }
   }
+  */
 }
 
 function throwIfErrors(errorList) {
@@ -109,6 +125,58 @@ function formatTypeOf(name, propObj, propSig, typeObj, typeSig) {
   format += ' while the signature is ' + typeof(propSig);
   format += ' and we think sig=' + matchers.typeCodeToString(typeSig) + ' obj=' +  matchers.typeCodeToString(typeObj);
   return format;
+}
+
+function validateObjectProperties(name, obj, sig, errorList, options) {
+  var keys = Object.keys(sig);
+  var keysObj = Object.keys(obj);
+
+  if (keys.length !== keysObj.length) {
+    var mismatchError = 'Objects do not have the same list of properties.';
+    errorList.push(mismatchError);
+    return;
+  }
+
+  //console.log(keys);
+  //var sigprops = [];
+  for (var idx = 0; idx < keys.length; idx++) {
+    var propName = keys[idx];
+
+    if (options.enable_logging) {
+      log('BEGIN propName=' + propName);
+    }
+
+    var sigProp = sig[propName];
+    var objProp = obj[propName];
+
+    var sigType = matchers.getTypeCode(sigProp);
+    var objType = matchers.getTypeCode(objProp);
+
+    if (sigType === objType) {
+      if (options.props) {
+        log('Types match ...' + matchers.typeCodeToString(sigType));
+      }
+      //console.log('Types match ...' + matchers.typeCodeToString(sigType));
+      // types match...custom handlign by type.
+      if (sigType === matchers.TYPECODES.OBJECT) {
+        validateObjects(sigProp, objProp, errorList, options);
+      }
+      else if (sigType === matchers.TYPECODES.FUNCTION) {
+        //console.log('before valid sigs opts');
+        //console.log(options);
+        validateFunctionSignatures(propName, sigProp, objProp, errorList, options);
+      }
+    }
+    else {
+      var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
+      errorList.push(errorType);
+    }
+
+
+    if (options.enable_logging) {
+      log('END propName=' + propName);
+    }
+  }
 }
 
 function validateFunctionSignatures(name, propObj, propSig, errorList, options) {
@@ -135,26 +203,15 @@ function cloneObj(obj) {
   var keys = Object.keys(obj);
   for (var i = 0; i < keys.length; i++) {
     var prop = keys[i];
-    var type = matchers.getTypeCode(sigProp[prop]);
+    var val = obj[prop];
+    var type = matchers.getTypeCode(val);
     if (type === matchers.TYPECODES.OBJECT) {
-
+      newobj[prop] = cloneObj(val);
     }
-    newobj[prop] = obj[prop];
+    newobj[prop] = val;
   }
 
   return newobj;
-}
-
-function getLeftovers(biggerArray, smallerArray) {
-  var leftovers = [];
-  for (var i = 0; i < biggerArray.length; i++) {
-    var val = biggerArray[i];
-    if (smallerArray.indexOf(val) === INVALID_INDEX) {
-      leftovers.push(val);
-    }
-  }
-
-  return leftovers;
 }
 
 function getComparison(objFieldArray, sigFieldArray) {
@@ -215,46 +272,15 @@ function mergeObjects(obj, sig, options) {
 
         var objType = matchers.getTypeCode(objData);
         if (objType === matchers.TYPECODES.OBJECT) {
-          newObj[propName] = cloneObj(objData);
+          var sigData = sig[propName];
+          newObj[propName] = mergeObjects(objData, sigData, options);
+          //newObj[propName] = cloneObj(objData);
         } else {
           newObj[propName] = objData;
         }
     }
 
     return newObj;
-
-    /* old code
-
-    if (keysSig.length > keysObj.length)
-    {
-      // we add properties to the object.
-      var leftovers = getLeftovers(keysSig, keysObj);
-      log(leftovers);
-
-      for (var idx = 0; idx < leftovers.length; idx++) {
-        var propName = leftovers[idx];
-        var type = matchers.getTypeCode(sig[propName]);
-        if (type === matchers.TYPECODES.OBJECT) {
-            newObj[propName] = cloneObj(sig[propName]);
-        } else {
-          newObj[propName] = sig[propName];
-        }
-      }
-
-      return newObj;
-    } else if (keysSig.length < keysObj.length) {
-      for (var idx = 0; idx < keysSig.length; idx++) {
-        var propName = keysSig[idx];
-        var type = matchers.getTypeCode(obj[propName]);
-        if (type === matchers.TYPECODES.OBJECT) {
-            newObj[propName] = cloneObj(obj[propName]);
-        } else {
-          newObj[propName] = obj[propName];
-        }
-      }
-
-    }
-    */
   } else {
     // for now...we will get smarter once testing single types.
     return sig;
