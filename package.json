@@ -3,17 +3,8 @@
   "version": "0.0.1",
   "description": "A javascript signature recognition library",
   "author": "Christopher Buteau <cbuteau@gmail.com>",
-  "contributors": [
-    {
-      "name": "Foo Bar",
-      "email": "foo.bar@example.com"
-    }
-  ],
-  "bin": {
-    "module-name": "./bin/module-name"
-  },
   "scripts": {
-    "test": "vows --spec --isolate",
+    "test": "node jasmine-runner.js",
     "start": "node index.js",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
@@ -28,8 +19,8 @@
     "url": "https://github.com/cbuteau/signatures/issues"
   },
   "keywords": [
-    "nodejitsu",
-    "example",
+    "interface",
+    "signatures",
     "browsenpm"
   ],
   "dependencies": {},
