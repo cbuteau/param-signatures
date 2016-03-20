@@ -1,6 +1,10 @@
 
 # SIGNATURES
 
+## Status
+
+[![Build Status](https://travis-ci.org/cbuteau/signatures.svg?branch=master)](https://travis-ci.org/cbuteau/signatures)
+
 ## Background
 
 As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.
