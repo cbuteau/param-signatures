@@ -19,9 +19,9 @@ module.internals = {
     module.internals.matchers.push(und);
     module.internals.matchers.push(bool);
     module.internals.matchers.push(func);
+    module.internals.matchers.push(date);
     module.internals.matchers.push(num);
     module.internals.matchers.push(str);
-    module.internals.matchers.push(date);
     module.internals.matchers.push(arr);
     module.internals.matchers.push(obj);
   }

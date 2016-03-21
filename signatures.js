@@ -358,5 +358,9 @@ module.exports = {
 
   getTypeCode: function(obj) {
     return matchers.getTypeCode(obj);
+  },
+
+  typeCodeToString: function(code) {
+    return matchers.typeCodeToString(code);
   }
 };

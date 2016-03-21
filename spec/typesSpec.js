@@ -107,7 +107,7 @@ describe('typesSpec.js Validate handling of each type...', function() {
 
   });
 
-  describe('Functions', function() {
+  describe('Functions...', function() {
     it ('Function 0', function() {
       var sig = {
         fieldOne: function () {},

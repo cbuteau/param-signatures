@@ -15,7 +15,7 @@ module.exports = {
 
     // duck typing Date.
     // tets for these functions.
-    if (objectToTest.getDay && objectToTest.getYear && objectToTest.getMonth && objectToTest.getHour && objectToTest.getMinutes && objectToTest.getSeconds) {
+    if (objectToTest.getDay && objectToTest.getYear && objectToTest.getMonth && objectToTest.getHours && objectToTest.getMinutes && objectToTest.getSeconds) {
       return true;
     }
 
