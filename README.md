@@ -3,7 +3,7 @@
 
 ## Status
 
-[![Build Status](https://travis-ci.org/cbuteau/signatures.svg?branch=master)](https://travis-ci.org/cbuteau/signatures)
+[![Build Status](https://travis-ci.org/cbuteau/param-signatures.svg?branch=master)](https://travis-ci.org/cbuteau/param-signatures)
 
 ## Background
 
