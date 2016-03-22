@@ -7,10 +7,6 @@ module.exports = {
   },
 
   isTypeMatch: function(objectToTest) {
-    // if (objectToTest instanceof Object) {
-    //   return true;
-    // }
-
     // duck typing object.
     // tets for these functions.
     if (objectToTest.isPrototypeOf && objectToTest.hasOwnProperty && objectToTest.toString) {

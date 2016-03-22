@@ -7,11 +7,6 @@ var log = emptyLog;
 // constants
 var INVALID_INDEX = -1;
 
-function totallyEquals(a, b) {
-  // i hate you.
-  return (a === b);
-}
-
 function isNullOrUndefined(objectToTest) {
   if ((objectToTest === null) || (objectToTest === undefined)) {
     return true;
@@ -21,12 +16,11 @@ function isNullOrUndefined(objectToTest) {
 }
 
 function validateObjects(obj, sig, errorList, options) {
-  //console.log('valid objests options follow');
-  //console.log(options);
-  if (isNullOrUndefined(options)) {
-    console.error('options are null or undefined');
-  }
+  // if (isNullOrUndefined(options)) {
+  //   console.error('options are null or undefined');
+  // }
 
+  // possibly check the typecode for null or undefined...
   if (isNullOrUndefined(obj)) {
     errorList.push('Object is null or undefined');
     return;
@@ -51,62 +45,6 @@ function validateObjects(obj, sig, errorList, options) {
     var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
     errorList.push(errorType);
   }
-
-  /*
-  var keys = Object.keys(sig);
-  var keysObj = Object.keys(obj);
-
-  if (keys.length !== keysObj.length) {
-    var mismatchError = 'Objects do not have the same list of properties.';
-    errorList.push(mismatchError);
-    return;
-  }
-
-  //console.log(keys);
-  //var sigprops = [];
-  for (var idx = 0; idx < keys.length; idx++) {
-    var propName = keys[idx];
-
-    if (options.enable_logging) {
-      log('BEGIN propName=' + propName);
-    }
-
-    var sigProp = sig[propName];
-    var objProp = obj[propName];
-
-    //console.log('sig=' + sigProp);
-    //console.log('obj=' + objProp);
-
-
-    var sigType = matchers.getTypeCode(sigProp);
-    var objType = matchers.getTypeCode(objProp);
-
-    if (sigType === objType) {
-      if (options.props) {
-        log('Types match ...' + matchers.typeCodeToString(sigType));
-      }
-      //console.log('Types match ...' + matchers.typeCodeToString(sigType));
-      // types match...custom handlign by type.
-      if (sigType === matchers.TYPECODES.OBJECT) {
-        validateObjects(sigProp, objProp, errorList, options);
-      }
-      else if (sigType === matchers.TYPECODES.FUNCTION) {
-        //console.log('before valid sigs opts');
-        //console.log(options);
-        validateFunctionSignatures(propName, sigProp, objProp, errorList, options);
-      }
-    }
-    else {
-      var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
-      errorList.push(errorType);
-    }
-
-
-    if (options.enable_logging) {
-      log('END propName=' + propName);
-    }
-  }
-  */
 }
 
 function throwIfErrors(errorList) {
@@ -137,8 +75,6 @@ function validateObjectProperties(name, obj, sig, errorList, options) {
     return;
   }
 
-  //console.log(keys);
-  //var sigprops = [];
   for (var idx = 0; idx < keys.length; idx++) {
     var propName = keys[idx];
 
@@ -151,6 +87,7 @@ function validateObjectProperties(name, obj, sig, errorList, options) {
 
     var sigType = matchers.getTypeCode(sigProp);
     var objType = matchers.getTypeCode(objProp);
+
 
     if (sigType === objType) {
       if (options.props) {
@@ -305,15 +242,6 @@ module.exports = {
     //var opts = mergeObjects(options, optionsSignature);
     var optsTemp = module.exports.mergeAndReturn(options, defaultOptions);
     var opts = optsTemp;
-    // var tempErrors = [];
-    // validateObjects(options, optionsSignature, tempErrors, defaultOptions);
-    // var opts = options;
-    // if (tempErrors.length > 0) {
-    //   opts = defaultOptions;
-    // }
-
-    //console.log('selected options');
-    //console.log(opts);
 
     if (opts.enable_logging) {
       log = console.log;

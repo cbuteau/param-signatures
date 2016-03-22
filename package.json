@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node jasmine-runner.js",
     "debug": "node-debug jasmine-runner.js",
+    "coverage": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js & start ./coverage/lcov-report/index.html",
     "start": "node signatures.js",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
@@ -33,6 +34,7 @@
   "dependencies": {},
   "devDependencies": {
     "assume": "<1.0.0 || >=2.3.1 <2.4.5 || >=2.5.2 <3.0.0",
+    "istanbul": "0.4.2",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "jasmine-spec-reporter": "^2.4.0",

@@ -107,5 +107,17 @@ describe('typeCodeSpec.js Stability and relibility in type code...', function() 
       var typeString = signatures.typeCodeToString(signatures.getTypeCode(testFun));
       expect(typeString).toBe('Function');
     });
+    
+    it ('String string', function() {
+      var testStr = 'The quick brown fox leaped over the sleepign dog';
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testStr));
+      expect(typeString).toBe('String');
+    });
+
+    it ('String string', function() {
+      var testParam = {};
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testParam));
+      expect(typeString).toBe('Object');
+    });
   });
 });

@@ -7,3 +7,9 @@ node_modules/
 
 # Office Temp Files
 ~$*
+
+# Coverage by Istanbul
+coverage/
+
+#Dist directory until it is ready
+dist/

@@ -24,23 +24,18 @@ module.internals = {
     module.internals.matchers.push(str);
     module.internals.matchers.push(arr);
     module.internals.matchers.push(obj);
-  }
-};
-
-// function loadMatchers(matcherArray) {
-//   var obj = require('./object');
-//   var bool = require('./boolean');
-//
-//   matcherArray.push(obj);
-//   matcherArray.push(bool);
-// }
-
-module.exports = {
-  findMatcher: function findMatcher(testObject) {
+  },
+  initialize: function() {
     if (!module.internals.isInitialized) {
       module.internals.loadMatchers();
       module.internals.isInitialized = true;
     }
+  }
+};
+
+module.exports = {
+  findMatcher: function findMatcher(testObject) {
+    module.internals.initialize();
     for (var idx = 0; idx < module.internals.matchers.length; idx++)
     {
       var matcher = module.internals.matchers[idx];
@@ -53,10 +48,7 @@ module.exports = {
   },
 
   getTypeCode: function getTypeCode(testObject) {
-    if (!module.internals.isInitialized) {
-      module.internals.loadMatchers();
-      module.internals.isInitialized = true;
-    }
+    module.internals.initialize();
     var matcher = module.exports.findMatcher(testObject);
     return matcher.getTypeCode();
   },

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for param-signatures\spec\typeCodeSpec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">param-signatures/spec/</a> typeCodeSpec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>75/75</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">86.96% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>75/75</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+var signatures = require('../signatures');
+&nbsp;
+<span class="fstat-no" title="function not covered" >function testOne(param) {</span>
+&nbsp;
+}
+&nbsp;
+describe('typeCodeSpec.js Stability and relibility in type code...', function() {
+&nbsp;
+  describe('type codes', function() {
+    it ('null', function() {
+      var type = signatures.getTypeCode(null);
+      expect(type).toBe(signatures.TYPECODES.NULL);
+    });
+&nbsp;
+    it ('undefined', function() {
+      var thing;
+      var type = signatures.getTypeCode(thing);
+      expect(type).toBe(signatures.TYPECODES.UNDEFINED);
+    });
+&nbsp;
+    it ('object', function() {
+      var type = signatures.getTypeCode({});
+      expect(type).toBe(signatures.TYPECODES.OBJECT);
+&nbsp;
+      var type = signatures.getTypeCode({ fieldOne: true, fieldTwo: 3.14 });
+      expect(type).toBe(signatures.TYPECODES.OBJECT);
+    });
+&nbsp;
+    it ('number', function() {
+      var type = signatures.getTypeCode(10);
+      expect(type).toBe(signatures.TYPECODES.NUMBER);
+&nbsp;
+      var type = signatures.getTypeCode(3.145967);
+      expect(type).toBe(signatures.TYPECODES.NUMBER);
+    });
+&nbsp;
+    it ('boolean', function() {
+      var type = signatures.getTypeCode(true);
+      expect(type).toBe(signatures.TYPECODES.BOOLEAN);
+&nbsp;
+      var type = signatures.getTypeCode(false);
+      expect(type).toBe(signatures.TYPECODES.BOOLEAN);
+    });
+&nbsp;
+    it ('array', function() {
+      var type = signatures.getTypeCode([]);
+      expect(type).toBe(signatures.TYPECODES.ARRAY);
+&nbsp;
+      var type = signatures.getTypeCode([true, false, true]);
+      expect(type).toBe(signatures.TYPECODES.ARRAY);
+    });
+&nbsp;
+    it ('date', function() {
+      var type = signatures.getTypeCode(new Date(Date.now()));
+      expect(type).toBe(signatures.TYPECODES.DATE);
+    });
+&nbsp;
+    it ('function', function() {
+      var type = signatures.getTypeCode(testOne);
+      expect(type).toBe(signatures.TYPECODES.FUNCTION);
+&nbsp;
+      var type = signatures.getTypeCode(<span class="fstat-no" title="function not covered" >function () {</span>});
+      expect(type).toBe(signatures.TYPECODES.FUNCTION);
+    });
+  });
+&nbsp;
+  describe('Type strings', function() {
+    it ('null string', function() {
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(null));
+      expect(typeString).toBe('NULL');
+    });
+&nbsp;
+    it ('undefined string', function() {
+      var testUndef;
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testUndef));
+      expect(typeString).toBe('Undefined');
+    });
+&nbsp;
+    it ('number string', function() {
+      var testNum = 10;
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testNum));
+      expect(typeString).toBe('Number');
+    });
+&nbsp;
+    it ('array string', function() {
+      var testArray = [10,20,30];
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testArray));
+      expect(typeString).toBe('Array');
+    });
+&nbsp;
+    it ('boolean string', function() {
+      var testBool = false;
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testBool));
+      expect(typeString).toBe('Boolean');
+    });
+&nbsp;
+    it ('date string', function() {
+      var testDate = new Date(Date.now());
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testDate));
+      expect(typeString).toBe('Date');
+    });
+&nbsp;
+&nbsp;
+    it ('function string', function() {
+      var testFun = <span class="fstat-no" title="function not covered" >function() {</span>};
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testFun));
+      expect(typeString).toBe('Function');
+    });
+    
+    it ('String string', function() {
+      var testStr = 'The quick brown fox leaped over the sleepign dog';
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testStr));
+      expect(typeString).toBe('String');
+    });
+&nbsp;
+    it ('String string', function() {
+      var testParam = {};
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testParam));
+      expect(typeString).toBe('Object');
+    });
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 21 2016 23:35:45 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
