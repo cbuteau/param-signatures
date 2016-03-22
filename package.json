@@ -14,11 +14,17 @@
   "main": "signatures.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cbuteau/signatures"
+    "url": "https://github.com/cbuteau/param-signatures"
   },
   "bugs": {
-    "url": "https://github.com/cbuteau/signatures/issues"
+    "url": "https://github.com/cbuteau/param-signatures/issues"
   },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/cbuteau/param-signatures/blob/master/LICENSE.md"
+    }
+  ],
   "keywords": [
     "interface",
     "signatures",

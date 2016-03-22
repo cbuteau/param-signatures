@@ -87,7 +87,7 @@ var obj1 = {
 
 };
 
-
+// this will throw an exception on all the missing fields from the object.
 signatures.validate(sig, obj1);
 ```
 ## Strategy
