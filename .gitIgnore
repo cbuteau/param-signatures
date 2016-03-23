@@ -13,3 +13,5 @@ coverage/
 
 #Dist directory until it is ready
 dist/
+
+opt.log

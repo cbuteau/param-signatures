@@ -107,6 +107,26 @@ describe('typesSpec.js Validate handling of each type...', function() {
 
   });
 
+  it ('Date', function() {
+    var sig = {
+      fieldOne: new Date(),
+    };
+
+    // modified
+    // 2016-03-02T18:22:38Z
+    //
+    // created
+    // 2016-03-02T18:22:34Z
+
+    var obj = {
+      fieldOne: new Date('2016-03-02T18:22:34Z'),
+    };
+
+    expect(function(){
+      signatures.validate(sig, obj);
+    }).not.toThrow();
+  });
+
   describe('Functions...', function() {
     it ('Function 0', function() {
       var sig = {
@@ -198,26 +218,5 @@ describe('typesSpec.js Validate handling of each type...', function() {
 
     });
 
-  });
-
-
-  it ('Date', function() {
-    var sig = {
-      fieldOne: new Date(),
-    };
-
-    // modified
-    // 2016-03-02T18:22:38Z
-    //
-    // created
-    // 2016-03-02T18:22:34Z
-
-    var obj = {
-      fieldOne: new Date('2016-03-02T18:22:34Z'),
-    };
-
-    expect(function(){
-      signatures.validate(sig, obj);
-    }).not.toThrow();
   });
 });

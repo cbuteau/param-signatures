@@ -42,7 +42,7 @@ function validateObjects(obj, sig, errorList, options) {
       validateFunctionSignatures('root', obj, sig, errorList, options);
     }
   } else {
-    var errorType = formatTypeOf(propName, objProp, sigProp, objType, sigType);
+    var errorType = formatTypeOf('root', obj, sig, rootObjType, rootSigType);
     errorList.push(errorType);
   }
 }

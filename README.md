@@ -46,22 +46,91 @@ The idea is that you validate parameters to be in the form (nested or not) like 
 
 Signature for this library.
 
+### validate
+
 ```javascript
 validate(object, signature)  
 ```
 
 validates an object against a signature object and throws an exception on a mismatch.
 
+#### Example
+
+```javascript
+var signatures = require('signatures');
+
+var sig = {
+  fieldOne: 10,
+  fieldTwo: 3.14,
+  fieldThree: true,
+  fieldFour: false,
+  fieldFive: 'just a string',
+  fieldSix: {
+    subObjOne: 666,
+    subObjTwo: 'whats up',
+  },
+  fieldSeven: {
+
+  },
+};
+
+var obj1 = {
+
+};
+
+// this will throw an exception on all the missing fields from the object.
+signatures.validate(sig, obj1);
+```
+
+### tryValidate
+
 ```javascript
 tryValidate(object, signature)
 ```
 
-validates an object against a signature object and returns a collection of errors.
+validates an object against a signature object and returns a boolean whether it passed.
+
+### mergeAndReturn
 
 ```javascript
 var opts = mergeAndReturn(object, defaultObject);
 ```
 Adds the properties to object that exist in defaultObject and returns a fresh object obeying the signature defined.
+
+#### Example
+```javascript
+var signatures = require('signatures');
+
+var sig = {
+  fieldOne: 10,
+  fieldTwo: 3.14,
+  fieldThree: true,
+  fieldFour: false,
+  fieldFive: 'just a string',
+  fieldSix: {
+    subObjOne: 666,
+    subObjTwo: 'whats up',
+  },
+  fieldSeven: {
+
+  },
+};
+
+var obj = {
+  fieldOne: 10,
+  fieldTwo: 3.14,
+  fieldThree: true,
+  fieldFour: false,
+  fieldFive: 'just a string',
+};
+
+var newObj = signatures.mergeAndReturn(obj, sig);
+// the returned object will have the matching properties of the object
+// copied over
+// as well as the missing properties from the signature.
+
+```
+
 
 ## Example
 

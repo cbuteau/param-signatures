@@ -26,3 +26,6 @@ https://www.npmjs.com/search?q=signatures
 js-signatures
 option-signatures
 param-signatures
+
+
+Rename all tests and all examples in README to param-signatures.

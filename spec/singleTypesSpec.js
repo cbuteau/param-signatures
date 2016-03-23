@@ -117,6 +117,42 @@ describe('Tests for single types...', function() {
       expect(output).toBe(Math.PI);
 
     });
+
+    it ('string', function() {
+      var HELLO_WORLD = 'Hello World';
+      var testParam = HELLO_WORLD;
+      var testSig = '';
+
+      var output = signatures.mergeAndReturn(testParam, testSig);
+      expect(output).toBe(HELLO_WORLD);
+
+    });
+
+    it ('date', function() {
+      var BERFDAY = new Date(12,11,1971,10,00,00);
+      var testParam = BERFDAY;
+      var testSig = new Date();
+
+      var output = signatures.mergeAndReturn(testParam, testSig);
+      expect(output).toBe(BERFDAY);
+
+    });
+
+    it ('function', function() {
+      var called = false;
+
+      var BERFDAY = new Date(12,11,1971,10,00,00);
+      var testParam = function () {
+        called = true;
+      };
+      var testSig = function() {};
+
+      var output = signatures.mergeAndReturn(testParam, testSig);
+      output();
+      expect(called).toBe(true);
+
+    });
+
   });
 
 });

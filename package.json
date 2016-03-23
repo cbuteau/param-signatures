@@ -7,6 +7,7 @@
     "test": "node jasmine-runner.js",
     "debug": "node-debug jasmine-runner.js",
     "coverage": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js & start ./coverage/lcov-report/index.html",
+    "opt": "node --crankshaft --trace-opt --trace-deopt --code-comments jasmine-runner.js > opt.log",
     "start": "node signatures.js",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
