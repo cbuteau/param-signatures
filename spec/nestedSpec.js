@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('nestedSpec.js Processing nested objects...', function() {
   it ('first test', function() {

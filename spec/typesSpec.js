@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('typesSpec.js Validate handling of each type...', function() {
   it ('null', function() {

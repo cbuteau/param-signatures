@@ -1,4 +1,4 @@
-var signatures = require('../signatures');
+var signatures = require('../');
 
 var customMatchers = require('./support/custommatchers');
 

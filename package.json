@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node jasmine-runner.js",
     "debug": "node-debug jasmine-runner.js",
-    "coverage": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js & start ./coverage/lcov-report/index.html",
+    "coverage": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js",
+    "showcov": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js & start ./coverage/lcov-report/index.html",
     "opt": "node --crankshaft --trace-opt --trace-deopt --code-comments jasmine-runner.js > opt.log",
     "start": "node signatures.js",
     "predeploy": "echo im about to deploy",
@@ -28,6 +29,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "coveralls": "2.10.0",
     "istanbul": "0.4.2",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",

@@ -1,6 +1,6 @@
 
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('tryValidatSpec.js Validate tryValidate function...', function() {
   it ('null', function() {

@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 function testOne(param) {
 
@@ -107,7 +107,7 @@ describe('typeCodeSpec.js Stability and relibility in type code...', function() 
       var typeString = signatures.typeCodeToString(signatures.getTypeCode(testFun));
       expect(typeString).toBe('Function');
     });
-    
+
     it ('String string', function() {
       var testStr = 'The quick brown fox leaped over the sleepign dog';
       var typeString = signatures.typeCodeToString(signatures.getTypeCode(testStr));

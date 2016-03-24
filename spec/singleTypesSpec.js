@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('Tests for single types...', function() {
   describe('validate..', function() {

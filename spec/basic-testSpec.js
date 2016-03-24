@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('Basic Tests', function (){
   it('Basic PASS', function() {

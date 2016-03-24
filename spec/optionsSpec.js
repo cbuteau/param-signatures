@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('optionsSpec.js Options tests', function() {
   it ('Full Options', function() {

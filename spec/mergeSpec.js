@@ -1,5 +1,5 @@
 
-var signatures = require('../signatures');
+var signatures = require('../');
 
 describe('mergeSpec.js merge exercises...', function() {
   it('merges easily', function() {
