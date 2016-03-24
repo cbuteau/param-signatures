@@ -5,6 +5,8 @@
 
 [![Build Status](https://travis-ci.org/cbuteau/param-signatures.svg?branch=master)](https://travis-ci.org/cbuteau/param-signatures)
 
+[![Coverage Status](https://coveralls.io/repos/cbuteau/param-signatures/badge.svg)](https://coveralls.io/r/cbuteau/param-signatures)
+
 ## Background
 
 As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.
