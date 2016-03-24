@@ -5,7 +5,7 @@
 
 [![Build Status](https://travis-ci.org/cbuteau/param-signatures.svg?branch=master)](https://travis-ci.org/cbuteau/param-signatures)
 
-[![Coverage Status](https://coveralls.io/repos/cbuteau/param-signatures/badge.svg)](https://coveralls.io/r/cbuteau/param-signatures)
+[![Coverage Status](https://coveralls.io/repos/github/cbuteau/param-signatures/badge.svg?branch=master)](https://coveralls.io/github/cbuteau/param-signatures?branch=master)
 
 ## Background
 
