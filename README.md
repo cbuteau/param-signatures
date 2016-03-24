@@ -59,7 +59,7 @@ validates an object against a signature object and throws an exception on a mism
 #### Example
 
 ```javascript
-var signatures = require('signatures');
+var signatures = require('param-signatures');
 
 var sig = {
   fieldOne: 10,
@@ -92,6 +92,54 @@ tryValidate(object, signature)
 
 validates an object against a signature object and returns a boolean whether it passed.
 
+#### Example
+
+```javascript
+var signatures = require('param-signatures');
+
+var defaults = {
+  fieldOne: 10,
+  fieldTwo: 3.14,
+  fieldThree: true,
+  fieldFour: false,
+  fieldFive: 'The common error string',
+  fieldSix: {
+    subObjOne: 666,
+    subObjTwo: 'The username',
+  },
+  fieldSeven: {
+
+  },
+};
+
+var sig = {
+  fieldOne: 10,
+  fieldTwo: 3.14,
+  fieldThree: true,
+  fieldFour: false,
+  fieldFive: 'just a string',
+  fieldSix: {
+    subObjOne: 666,
+    subObjTwo: 'whats up',
+  },
+  fieldSeven: {
+
+  },
+};
+
+var obj1 = {
+
+};
+
+var opts;
+if (signatures.tryValidate(obj, sig)) {
+  opts = obj;
+} else {
+  opts = defaults;
+}
+
+```
+
 ### mergeAndReturn
 
 ```javascript
@@ -101,7 +149,7 @@ Adds the properties to object that exist in defaultObject and returns a fresh ob
 
 #### Example
 ```javascript
-var signatures = require('signatures');
+var signatures = require('param-signatures');
 
 var sig = {
   fieldOne: 10,
