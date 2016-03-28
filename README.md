@@ -7,8 +7,9 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/cbuteau/param-signatures/badge.svg?branch=master)](https://coveralls.io/github/cbuteau/param-signatures?branch=master)
 
-NPM (shields.io)[![npm version](http://img.shields.io/npm/v/param-signatures.svg?style=flat)](https://npmjs.org/package/param-signatures "View this project on npm")
+[![npm version](http://img.shields.io/npm/v/param-signatures.svg?style=flat)](https://npmjs.org/package/param-signatures "View this project on npm")
 
+[![npm](https://img.shields.io/npm/dt/param-signatures.svg)]()
 
 ## Background
 
