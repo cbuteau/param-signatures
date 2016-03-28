@@ -43,9 +43,6 @@
     "watchify": "^3.7.0"
   },
   "preferGlobal": false,
-  "publishConfig": {
-    "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"
-  },
   "subdomain": "foobar",
   "analyze": true,
   "license": "MIT"
