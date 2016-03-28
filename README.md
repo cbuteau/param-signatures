@@ -186,34 +186,6 @@ var newObj = signatures.mergeAndReturn(obj, sig);
 
 ```
 
-
-## Example
-
-```javascript
-var signatures = require('signatures');
-
-var sig = {
-  fieldOne: 10,
-  fieldTwo: 3.14,
-  fieldThree: true,
-  fieldFour: false,
-  fieldFive: 'just a string',
-  fieldSix: {
-    subObjOne: 666,
-    subObjTwo: 'whats up',
-  },
-  fieldSeven: {
-
-  },
-};
-
-var obj1 = {
-
-};
-
-// this will throw an exception on all the missing fields from the object.
-signatures.validate(sig, obj1);
-```
 ## Strategy
 
 Although javascript is dynamic and always being optimized the final product is machine instructions and thus I prefer a limit of tests to perform work and would rather match against an integer versus a string.  Hopefully it will result in faster code which this is supposed to be a simple functionality.
