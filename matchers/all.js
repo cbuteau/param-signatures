@@ -44,7 +44,9 @@ module.exports = {
       }
     }
 
-    return null;
+    // we could hit this line if we allow custom matchers.
+    // for now we will disable looking for it.
+    /* istanbul ignore next: never hit this line but this code is written properly. */ return null;
   },
 
   getTypeCode: function getTypeCode(testObject) {
@@ -54,6 +56,7 @@ module.exports = {
   },
 
   typeCodeToString: function typeCodeToString(typeCode) {
+    /* istanbul ignore else */
     if (typecodes.STRING === typeCode) {
       return 'String';
     }

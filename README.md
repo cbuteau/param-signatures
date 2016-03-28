@@ -7,6 +7,9 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/cbuteau/param-signatures/badge.svg?branch=master)](https://coveralls.io/github/cbuteau/param-signatures?branch=master)
 
+NPM (shields.io)[![npm version](http://img.shields.io/npm/v/param-signatures.svg?style=flat)](https://npmjs.org/package/param-signatures "View this project on npm")
+
+
 ## Background
 
 As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.

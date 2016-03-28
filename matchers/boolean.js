@@ -6,13 +6,10 @@ module.exports = {
   },
 
   isTypeMatch: function(objectToTest) {
-    // duck typing Boolean.
-    if (objectToTest.valueOf && objectToTest.toString) {
-      // use strict equality to prove it is a bool.
-      if ((objectToTest === true) ||
-        (objectToTest === false)) {
-        return true;
-      }
+    // duck typing does not matter just go for 2 strict compares to get it done.
+    if ((objectToTest === true) ||
+      (objectToTest === false)) {
+      return true;
     }
 
     return false;

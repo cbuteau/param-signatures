@@ -102,11 +102,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
   describe('Functions', function() {
     it ('Function 0', function() {
       var sig = {
-        fieldOne: function () {},
+        fieldOne: /* istanbul ignore next */ function () {},
       };
 
       var obj = {
-        fieldOne: function() {},
+        fieldOne: /* istanbul ignore next */ function() {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(true);
@@ -116,11 +116,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
 
     it ('Function 1', function() {
       var sig = {
-        fieldOne: function (param) {},
+        fieldOne: /* istanbul ignore next */ function (param) {},
       };
 
       var obj = {
-        fieldOne: function(anon) {},
+        fieldOne: /* istanbul ignore next */ function(anon) {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(true);
@@ -130,11 +130,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
 
     it ('Function 2', function() {
       var sig = {
-        fieldOne: function (param, options) {},
+        fieldOne: /* istanbul ignore next */ function (param, options) {},
       };
 
       var obj = {
-        fieldOne: function(param, options) {},
+        fieldOne: /* istanbul ignore next */ function(param, options) {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(true);
@@ -144,11 +144,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
 
     it ('Function 3', function() {
       var sig = {
-        fieldOne: function (param, options, details) {},
+        fieldOne: /* istanbul ignore next */ function (param, options, details) {},
       };
 
       var obj = {
-        fieldOne: function(param, options, details) {},
+        fieldOne: /* istanbul ignore next */ function(param, options, details) {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(true);
@@ -161,11 +161,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
 
     it ('Function 4', function() {
       var sig = {
-        fieldOne: function (param, options, details, subdetails) {},
+        fieldOne: /* istanbul ignore next */ function (param, options, details, subdetails) {},
       };
 
       var obj = {
-        fieldOne: function(param, options, details, subdetails) {},
+        fieldOne: /* istanbul ignore next */ function(param, options, details, subdetails) {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(true);
@@ -173,11 +173,11 @@ describe('tryValidatSpec.js Validate tryValidate function...', function() {
 
     it ('Function Mismatch', function() {
       var sig = {
-        fieldOne: function (param, options, details, subdetails) {},
+        fieldOne: /* istanbul ignore next */ function (param, options, details, subdetails) {},
       };
 
       var obj = {
-        fieldOne: function() {},
+        fieldOne: /* istanbul ignore next */ function() {},
       };
 
       expect(signatures.tryValidate(sig, obj)).toBe(false);

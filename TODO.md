@@ -29,3 +29,13 @@ param-signatures
 
 
 Rename all tests and all examples in README to param-signatures.
+
+=====
+Write more single type merge options.
+
+Hit cloneObj more often before publishing.
+Confirm actual property names in some of the merge tests.
+
+Review tests.
+Maybe more function params.
+100 tests might be a good number to publish

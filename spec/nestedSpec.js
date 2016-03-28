@@ -9,10 +9,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 3.14,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       }
     };
 
@@ -22,10 +22,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 21.9,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       }
     };
 
@@ -42,10 +42,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 3.14,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       }
     };
 
@@ -55,10 +55,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 21.9,
       fieldFour: [],
       callbacks: {
-        onConnect: function(param1) {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function(param1) {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       }
     };
 
@@ -75,10 +75,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 3.14,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       },
       customize: {
         headers: [],
@@ -95,10 +95,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 21.9,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       },
       customize: {
         headers: ["Tree", "Modified", "Owned"],
@@ -122,10 +122,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 3.14,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       },
       customize: {
         headers: [],
@@ -143,10 +143,10 @@ describe('nestedSpec.js Processing nested objects...', function() {
       fieldThree: 21.9,
       fieldFour: [],
       callbacks: {
-        onConnect: function() {},
-        onDisconnect: function(err) {},
-        onData: function(data, err) {},
-        onCustomize: function(field, options, data) {}
+        onConnect: /* istanbul ignore next */ function() {},
+        onDisconnect: /* istanbul ignore next */ function(err) {},
+        onData: /* istanbul ignore next */ function(data, err) {},
+        onCustomize: /* istanbul ignore next */ function(field, options, data) {}
       },
       customize: {
         headers: ["Tree", "Modified", "Owned"],

@@ -1,4 +1,5 @@
 
+/* istanbul ignore next */
 function enquote(str) {
   return '\'' + str + '\'';
 }
@@ -17,8 +18,10 @@ module.exports = {
 
         var result = {};
 
+        /* istanbul ignore else: code is written corectly just not covereed in passing tests */
         if (exception) {
           var msg = exception.message;
+          /* istanbul ignore else: code is written correctly just never covered in passing tests. */
           if (msg.indexOf(expected) !== -1) {
             result.pass = true;
           } else {

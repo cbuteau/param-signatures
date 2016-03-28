@@ -1,6 +1,7 @@
 
 var signatures = require('../');
 
+/* istanbul ignore next */
 function testOne(param) {
 
 }
@@ -60,7 +61,7 @@ describe('typeCodeSpec.js Stability and relibility in type code...', function() 
       var type = signatures.getTypeCode(testOne);
       expect(type).toBe(signatures.TYPECODES.FUNCTION);
 
-      var type = signatures.getTypeCode(function () {});
+      var type = signatures.getTypeCode( /* istanbul ignore next */ function () {});
       expect(type).toBe(signatures.TYPECODES.FUNCTION);
     });
   });
@@ -103,7 +104,7 @@ describe('typeCodeSpec.js Stability and relibility in type code...', function() 
 
 
     it ('function string', function() {
-      var testFun = function() {};
+      var testFun = /* istanbul ignore next */ function() {};
       var typeString = signatures.typeCodeToString(signatures.getTypeCode(testFun));
       expect(typeString).toBe('Function');
     });
@@ -114,10 +115,21 @@ describe('typeCodeSpec.js Stability and relibility in type code...', function() 
       expect(typeString).toBe('String');
     });
 
-    it ('String string', function() {
+    it ('Object string', function() {
       var testParam = {};
       var typeString = signatures.typeCodeToString(signatures.getTypeCode(testParam));
       expect(typeString).toBe('Object');
+    });
+
+    it ('Array string', function() {
+      var testParam = [];
+      var typeString = signatures.typeCodeToString(signatures.getTypeCode(testParam));
+      expect(typeString).toBe('Array');
+    });
+
+    it ('Array string again', function() {
+      var typeString = signatures.typeCodeToString(signatures.TYPECODES.ARRAY);
+      expect(typeString).toBe('Array');
     });
   });
 });

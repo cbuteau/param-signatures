@@ -15,9 +15,9 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: false,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
     };
 
     expect(function() {
@@ -34,9 +34,9 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: false,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
     };
 
     expect(function() {
@@ -53,9 +53,9 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: false,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
     };
 
     expect(function() {
@@ -71,9 +71,9 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: false,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
     };
 
     expect(function() {
@@ -87,10 +87,10 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function () {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var object = null;
@@ -106,10 +106,10 @@ describe('negativeSpec.js - negative tests for more coverage...', function() {
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function () {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var object; // undefined

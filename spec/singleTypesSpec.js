@@ -78,8 +78,8 @@ describe('Tests for single types...', function() {
 
 
     it ('function', function() {
-      var sig = function() {};
-      var obj = function() {
+      var sig = /* istanbul ignore next */ function() {};
+      var obj = /* istanbul ignore next */ function() {
         console.log('Entered');
       };
 
@@ -89,7 +89,7 @@ describe('Tests for single types...', function() {
     });
 
     it ('function mismatch', function() {
-      var sig = function() {};
+      var sig = /* istanbul ignore next */ function() {};
       var obj = 'new Date(12,11,1971)';
 
       expect(function() {
@@ -145,7 +145,7 @@ describe('Tests for single types...', function() {
       var testParam = function () {
         called = true;
       };
-      var testSig = function() {};
+      var testSig = /* istanbul ignore next */ function() {};
 
       var output = signatures.mergeAndReturn(testParam, testSig);
       output();

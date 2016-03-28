@@ -1,27 +1,35 @@
 
 var signatures = require('../');
 
+var customMatchers = require('./support/custommatchers');
+
 describe('Basic Tests', function (){
+
+  beforeEach(function() {
+    jasmine.addMatchers(customMatchers);
+  });
+
   it('Basic PASS', function() {
     //console.log('Begin basic PASS');
     var signature = {
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      // we are ignoring these because they are never called and are testing the module.
+      fieldFour: /* istanbul ignore next */ function () {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var obj3 = {
       fieldOne: false,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
 
@@ -42,25 +50,25 @@ describe('Basic Tests', function (){
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function () {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var obj3 = {
       fieldOne: undefined,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour:/* istanbul ignore next */ function() {},
+      fieldFive:/* istanbul ignore next */ function(data){},
+      fieldSix:/* istanbul ignore next */ function(params, options) {},
+      fieldSeven:/* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     expect( function() {
         signatures.validate(signature, obj3);
-    }).toThrow();
+    }).toThrowContains('fieldOne');
 
   });
 
@@ -69,15 +77,15 @@ describe('Basic Tests', function (){
       fieldOne: undefined,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour:/* istanbul ignore next */ function() {},
+      fieldFive:/* istanbul ignore next */ function(data){},
+      fieldSix:/* istanbul ignore next */ function(params, options) {},
+      fieldSeven:/* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     expect( function() {
-        signatures.validate(null, obj3);
-    }).toThrow();
+        signatures.validate(obj3, null);
+    }).toThrowContains('Signature is null or undefined');
 
   });
 
@@ -86,53 +94,44 @@ describe('Basic Tests', function (){
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function () {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var obj3 = {
       fieldOne: undefined,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     expect( function() {
-        signatures.validate(signature, null);
-    }).toThrow();
+        signatures.validate(null, signature);
+    }).toThrowContains('Object is null or undefined');
 
   });
 
   it ('undefined sig', function() {
     var signature;
-    //  = {
-    //   fieldOne: true,
-    //   fieldTwo: 10,
-    //   fieldThree: 3.14,
-    //   fieldFour: function () {},
-    //   fieldFive: function(data){},
-    //   fieldSix: function(params, options) {},
-    //   fieldSeven: function(params, options, suboptions) {},
-    // };
 
     var obj3 = {
       fieldOne: undefined,
       fieldTwo: 0,
       fieldThree: 21.9,
-      fieldFour: function() {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function() {},
+      fieldFive: /* istanbul ignore next */ function(data){},
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     expect( function() {
-        signatures.validate(signature, obj3);
-    }).toThrow();
+        signatures.validate(obj3, signature);
+    }).toThrowContains('Signature is null or undefined');
 
   });
 
@@ -141,26 +140,17 @@ describe('Basic Tests', function (){
       fieldOne: true,
       fieldTwo: 10,
       fieldThree: 3.14,
-      fieldFour: function () {},
-      fieldFive: function(data){},
-      fieldSix: function(params, options) {},
-      fieldSeven: function(params, options, suboptions) {},
+      fieldFour: /* istanbul ignore next */ function () { },
+      fieldFive: /* istanbul ignore next */ function(data){ },
+      fieldSix: /* istanbul ignore next */ function(params, options) {},
+      fieldSeven: /* istanbul ignore next */ function(params, options, suboptions) {},
     };
 
     var obj3;
-    //  = {
-    //   fieldOne: undefined,
-    //   fieldTwo: 0,
-    //   fieldThree: 21.9,
-    //   fieldFour: function() {},
-    //   fieldFive: function(data){},
-    //   fieldSix: function(params, options) {},
-    //   fieldSeven: function(params, options, suboptions) {},
-    // };
 
     expect( function() {
-        signatures.validate(signature, obj3);
-    }).toThrow();
+        signatures.validate(obj3, signature);
+    }).toThrowContains('Object is null or undefined');
 
   });
 

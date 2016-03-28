@@ -1,6 +1,6 @@
 {
   "name": "param-signatures",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A javascript signature recognition library",
   "author": "Christopher Buteau <cbuteau@gmail.com>",
   "scripts": {

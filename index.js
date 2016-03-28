@@ -235,6 +235,11 @@ var defaultOptions = {
 };
 
 module.exports = {
+  /*
+   ** Validates object has the same fields and types as signature object and throws exception if it does not match.
+   ** @param object - The object to test.
+   ** @param signature - The object describing what the object param should have.
+   */
   validate: function(obj, sig, options) {
     var errors = [];
 
