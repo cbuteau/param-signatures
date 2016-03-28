@@ -13,6 +13,7 @@ NPM (shields.io)[![npm version](http://img.shields.io/npm/v/param-signatures.svg
 ## Background
 
 As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.
+I know these assumptions are mitigated through testing and code coverage but I wanted to learn what I could rely on in the typing system of javascript.
 
 Being very new to javascript the thing I did not like right off the bat was the amount of assumptions that are made in complex code bases.
 

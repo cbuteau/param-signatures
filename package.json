@@ -43,7 +43,6 @@
     "watchify": "^3.7.0"
   },
   "preferGlobal": false,
-  "private": true,
   "publishConfig": {
     "registry": "https://your-private-hosted-npm.registry.nodejitsu.com"
   },
