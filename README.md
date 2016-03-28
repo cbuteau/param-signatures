@@ -11,6 +11,8 @@
 
 [![npm](https://img.shields.io/npm/dt/param-signatures.svg)]()
 
+[![NPM](https://nodei.co/npm/param-signatures.png)](https://nodei.co/npm/param-signatures/)
+
 ## Background
 
 As a developer I originally used COM and then used .NET and I learned the value of interfaces very early on and used them consistently through many different code bases.
