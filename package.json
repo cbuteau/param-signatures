@@ -10,6 +10,7 @@
     "showcov": "./node_modules/.bin/istanbul cover --include-all-sources jasmine-runner.js & start ./coverage/lcov-report/index.html",
     "opt": "node --crankshaft --trace-opt --trace-deopt --code-comments jasmine-runner.js > opt.log",
     "start": "node signatures.js",
+    "doc":"./node_modules/.bin/jsdoc2md ./index.js > ./docs/param-signatures.md",
     "predeploy": "echo im about to deploy",
     "postdeploy": "echo ive deployed",
     "prepublish": "echo prepublish"

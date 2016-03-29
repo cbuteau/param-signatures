@@ -15,3 +15,6 @@ coverage/
 dist/
 
 opt.log
+
+#figuring out Jdoc
+out/

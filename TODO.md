@@ -38,4 +38,14 @@ Confirm actual property names in some of the merge tests.
 
 Review tests.
 Maybe more function params.
-100 tests might be a good number to publish
+100 tests might be a good number to publishing
+
+----------
+Better language in jsdoc
+Republish.
+
+
+JsDoc every description is twice.
+
+jsDox creates MD format but .... does not list TYPECODES as a member.
+https://github.com/sutoiku/jsdox/blob/master/jsdox.js

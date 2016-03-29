@@ -234,11 +234,17 @@ var defaultOptions = {
   props: false,
 };
 
+/**
+ * A module that ensures objects are similar.
+ * @module param-signatures
+ */
+
 module.exports = {
-  /*
-   ** Validates object has the same fields and types as signature object and throws exception if it does not match.
-   ** @param object - The object to test.
-   ** @param signature - The object describing what the object param should have.
+  /**
+   * Validates object has the same fields and types as signature object and throws exception if it does not match.
+   * @constuctor
+   * @param {object} object - The object to test.
+   * @param {object} signature - The object describing what the object param should have.
    */
   validate: function(obj, sig, options) {
     var errors = [];
@@ -259,6 +265,11 @@ module.exports = {
     throwIfErrors(errors);
   },
 
+  /**
+   * Returns a boolean whether an object validated against a signature object.
+   * @param {object} object - The object to test.
+   * @param {object} signature - The object describing what the object param should be.
+   */
   tryValidate: function(obj,sig,errors) {
         errors = errors || [];
         validateObjects(obj, sig, errors, defaultOptions);
@@ -266,6 +277,11 @@ module.exports = {
         return errors.length == 0;
       },
 
+  /**
+   * Merges the singature and object to return the corrent number of properties on a new object.
+   * @param {object} object - The object to test.
+   * @param {object} signature - The object describing what the object param should be.
+   */
   mergeAndReturn: function(obj, sig) {
     //return sig;
 
@@ -287,13 +303,24 @@ module.exports = {
     }
   },
 
-  TYPECODES: matchers.TYPECODES,
-
+  /**
+   * Gets the type code for the objects passed.
+   * @param {object} object - The object to get the current typecode for.
+   */
   getTypeCode: function(obj) {
     return matchers.getTypeCode(obj);
   },
 
+  /**
+   * Converts a typecode into a human readable string for debugging.
+   * @param {number} code - The type code to convert to string.
+   */
   typeCodeToString: function(code) {
     return matchers.typeCodeToString(code);
-  }
+  },
+
+  /**
+   * Returns an object containing the int typecodes for the javascript base objects.
+   */
+  TYPECODES: matchers.TYPECODES
 };
